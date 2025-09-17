@@ -151,6 +151,16 @@
     transition: 0.2s;
 }
 
+.face a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.google a{
+    text-decoration: none;
+    color: inherit;
+}
+
 .face button {
     background-color: #77c9ef;
     transition: transform 0.3s ease, background-color 0.3s ease;
@@ -178,4 +188,23 @@
 
 .google {
     color: #DB4437;
+}
+
+.back{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.back button{
+    width: 200px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background-color: #62dffe2f;
+    color: #DB4437;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
