@@ -8,7 +8,8 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
 // 👉 URL API backend Spring Boot
-const API_BASE_URL = "http://localhost:8080/api/v1/auth/login";
+const API_BASE_URL =
+  "https://be-facerecognition-attendance-2025.onrender.com/api/v1/auth/login";
 
 const Login = () => {
   const navigate = useNavigate();

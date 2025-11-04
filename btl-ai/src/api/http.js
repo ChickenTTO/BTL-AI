@@ -1,12 +1,12 @@
 import axios from "axios";
 
-// ✅ Nếu chạy bằng CRA thì phải dùng process.env.REACT_APP_...
+// ✅ Dùng baseURL từ Render
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:8080/api/v1",
+  baseURL: "https://be-facerecognition-attendance-2025.onrender.com/api/v1",
   headers: { "Content-Type": "application/json" },
 });
 
-// ✅ Hàm set access token cho tất cả request
+// ✅ Hàm set token vào header
 export function setAccessToken(token) {
   if (token) {
     api.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -15,7 +15,7 @@ export function setAccessToken(token) {
   }
 }
 
-// ✅ Interceptor: thêm accessToken vào mọi request nếu có
+// ✅ Interceptor: thêm token vào request
 api.interceptors.request.use(
   (config) => {
     const token = sessionStorage.getItem("accessToken");
@@ -27,33 +27,27 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// ✅ Interceptor: xử lý khi accessToken hết hạn (401)
+// ✅ Interceptor: xử lý token hết hạn (401)
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
-
       const refreshToken = sessionStorage.getItem("refreshToken");
       if (refreshToken) {
         try {
           const refreshRes = await axios.post(
-            "http://localhost:8080/api/v1/auth/refresh",
-            { refreshToken },
-            { headers: { "Content-Type": "application/json" } }
+            "https://be-facerecognition-attendance-2025.onrender.com/api/v1/auth/refresh",
+            { refreshToken }
           );
 
           if (refreshRes.data.status === "SUCCESS") {
             const newAccessToken = refreshRes.data.data;
-
-            // ✅ Lưu token mới và gắn vào header
             sessionStorage.setItem("accessToken", newAccessToken);
             setAccessToken(newAccessToken);
-
             originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-            return api(originalRequest); // gửi lại request gốc
+            return api(originalRequest);
           }
         } catch (refreshErr) {
           console.error("⚠️ Refresh token thất bại:", refreshErr);
@@ -65,7 +59,6 @@ api.interceptors.response.use(
         window.location.href = "/login";
       }
     }
-
     return Promise.reject(error);
   }
 );
