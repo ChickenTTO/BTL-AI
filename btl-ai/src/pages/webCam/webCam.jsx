@@ -18,7 +18,7 @@ const WebCam = () => {
             </div>
 
             <div className="bt-login">
-            <div style={{ marginTop: "20px" }}>
+            <div style={{ marginTop: "20px" }}> 
                 <button onClick={() => navigate("/login")}>Login with account Addmin</button>
             </div>
 

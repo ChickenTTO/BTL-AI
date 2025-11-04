@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.backgroud {
+  background-image: url("../../../assets/lg.jpg");
+  height: 100vh;
+  object-fit: cover;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.box {
+  background-color: azure;
+  width: 1000px;
+  height: 600px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 50px black;
+}
+
+.employee-table {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.employee-table th,
+.employee-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.employee-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.employee-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
