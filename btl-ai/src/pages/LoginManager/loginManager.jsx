@@ -50,9 +50,6 @@ function LoginManager() {
                   <p onClick={() => navigate("/loginManager/themQuanLy")}>
                     Thêm quản lý
                   </p>
-                  <p onClick={() => navigate("/loginManager/thongTinNhanVien")}>
-                    Thông tin nhân viên
-                  </p>
                   <p onClick={() => navigate("/loginManager/thongTinPhongBan")}>
                     Thông tin phòng ban
                   </p>
