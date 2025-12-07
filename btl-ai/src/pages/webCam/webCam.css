@@ -13,6 +13,10 @@
     background-size: cover;
 }
 
+.Webcam{
+    padding-top: 150px;
+}
+
 .cam{
     display: flex;
     justify-content: center;
