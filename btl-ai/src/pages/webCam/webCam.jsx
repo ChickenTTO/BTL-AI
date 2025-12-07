@@ -13,7 +13,7 @@ const WebCam = () => {
             <Webcam
                 audio={false}
                 screenshotFormat="image/jpeg"
-                width={700}
+                width={350}
             />
             </div>
 
